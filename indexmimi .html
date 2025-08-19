@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 💛</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #ffcce0);
+    overflow-x: hidden;
+    color: #333;
+  }
+
+  .floating { position: absolute; width: 20px; height: 20px; background: #ff6f91; border-radius: 50%; animation: float 10s linear infinite; opacity: 0.7; }
+  @keyframes float { 0% { transform: translateY(100vh) translateX(0) rotate(0deg); } 100% { transform: translateY(-10vh) translateX(100px) rotate(360deg); } }
+
+  .container { max-width: 700px; margin: 0 auto; text-align: center; padding: 50px 20px; position: relative; z-index: 1; }
+  h1 { font-family: 'Great Vibes', cursive; font-size: 3em; margin-bottom: 20px; color: #ff4f91; text-shadow: 1px 1px 5px rgba(0,0,0,0.2); }
+  h2 { font-size: 2em; margin: 40px 0 20px; color: #ff6f91; }
+  p { font-size: 1.2em; line-height: 1.8; margin-bottom: 25px; }
+  .slideshow { font-size: 1.2em; color: #ff4f91; font-weight: bold; margin: 20px 0; min-height: 40px; }
+  button { margin-top: 30px; background-color: #ff6f91; border: none; color: white; padding: 15px 30px; font-size: 1em; border-radius: 50px; cursor: pointer; transition: transform 0.2s; }
+  button:hover { transform: scale(1.1); }
+  .hidden { display: none; }
+  .confetti-piece { width: 10px; height: 10px; position: absolute; background-color: #ff6f91; opacity: 0.7; transform: rotate(45deg); animation: confetti-fall 3s linear infinite; }
+  @keyframes confetti-fall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(500px) rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="floating" style="left: 10%; width:15px;height:15px;"></div>
+<div class="floating" style="left: 50%; width:20px;height:20px;"></div>
+<div class="floating" style="left: 80%; width:18px;height:18px;"></div>
+
+<div class="container">
+
+  <div id="welcome">
+    <h1>Hi, my love…</h1>
+    <p>I made this just for you 🌸✨</p>
+    <button onclick="showSlideshow()">Start</button>
+  </div>
+
+  <div id="slideshow" class="hidden">
+    <div class="slideshow" id="slideText"></div>
+    <button onclick="showAbout()">Next</button>
+  </div>
+
+  <div id="about" class="hidden">
+    <h2>About You 🌹</h2>
+    <p>Favorite Flowers: Roses & Lilies 🌸</p>
+    <p>Favorite Colors: Pink & Soft Purple 💖</p>
+    <p>Favorite Foods: Chocolate & Sushi 🍫🍣</p>
+    <p>Favorite Perfumes: Jasmine & Vanilla 🌺</p>
+    <button onclick="showLoveLanguages()">Next</button>
+  </div>
+
+  <div id="loveLanguages" class="hidden">
+    <h2>My Promises 💞</h2>
+    <p>⏳ Quality Time – I’ll always give you my time</p>
+    <p>📝 Words of Affirmation – I’ll remind you every day how amazing you are</p>
+    <p>💖 Acts of Service – I’ll always help you when you need me</p>
+    <p>🎁 Gifts – Every gift I give will be from my heart</p>
+    <p>🤗 Physical Touch – I’ll always hold you close when you need it</p>
+    <button onclick="showLoveNote()">Next</button>
+  </div>
+
+  <div id="loveNote" class="hidden">
+    <h2>My Heartfelt Note 💌</h2>
+    <p>
+      I know I have already asked you to be my girlfriend, but I wanted to do things differently this time. I want to officially show you, in words that come straight from my heart, just how much you mean to me. Every day with you feels like a dream I never want to wake up from. Your smile, your laugh, your kindness, and even the little quirks that make you, <em>you</em>—they all make my world brighter.
+    </p>
+    <p>
+      I love how you make me feel safe, seen, and inspired to be the best version of myself. You’ve shown me what it means to care deeply and to love without reservation. I promise to always listen, to support your dreams, to laugh with you, and to hold you through every challenge and every triumph.
+    </p>
+    <p>
+      I don’t want to just call you my girlfriend—I want to celebrate every moment with you, cherish every memory we create, and grow together in ways I never imagined possible. You are my heart, my joy, and the reason I believe in love more each day.
+    </p>
+    <p>
+      So, I’m asking you once again, officially and with everything I am: Will you be my girlfriend, and let me spend every day showing you just how much you mean to me?
+    </p>
+    <button onclick="showProposal()">Next</button>
+  </div>
+
+  <div id="proposal" class="hidden">
+    <h1>Mihlali Esther Muine Jantjies, will you be my girlfriend? 💕</h1>
+    <button onclick="yesClicked()">Yes 💕</button>
+    <button onclick="noClicked()">No 🙈</button>
+  </div>
+
+  <div id="final" class="hidden">
+    <h1>Yay!! You’re mine now 💖 Forever and always.</h1>
+  </div>
+
+</div>
+
+<script>
+  const slides = ["The smile I can’t live without 💕","Every moment with you feels magical 🌸","You make my heart so full 💖"];
+  let slideIndex = 0;
+  function showSlideshow() {
+    document.getElementById('welcome').classList.add('hidden');
+    document.getElementById('slideshow').classList.remove('hidden');
+    displaySlide();
+  }
+  function displaySlide() {
+    const slideText = document.getElementById('slideText');
+    slideText.textContent = slides[slideIndex];
+    slideIndex = (slideIndex + 1) % slides.length;
+    setTimeout(displaySlide, 3000);
+  }
+  function showAbout() { document.getElementById('slideshow').classList.add('hidden'); document.getElementById('about').classList.remove('hidden'); }
+  function showLoveLanguages() { document.getElementById('about').classList.add('hidden'); document.getElementById('loveLanguages').classList.remove('hidden'); }
+  function showLoveNote() { document.getElementById('loveLanguages').classList.add('hidden'); document.getElementById('loveNote').classList.remove('hidden'); }
+  function showProposal() { document.getElementById('loveNote').classList.add('hidden'); document.getElementById('proposal').classList.remove('hidden'); }
+  function yesClicked() { document.getElementById('proposal').classList.add('hidden'); document.getElementById('final').classList.remove('hidden'); playConfetti(); playMusic(); }
+  function noClicked() { alert("🙈 Maybe next time!"); }
+  function playConfetti() { for(let i=0;i<100;i++){ const confetti = document.createElement('div'); confetti.classList.add('confetti-piece'); confetti.style.left = Math.random()*100 + 'vw'; confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`; document.body.appendChild(confetti); setTimeout(()=>{ confetti.remove(); }, 3000); } }
+  function playMusic() { const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); audio.play(); }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mihlali, Will You Be My Girlfriend?</title>
+  <meta name="description" content="A special website made just for Mihlali Esther Muine Jantjies." />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink:#ff6fa9;
+      --red:#ff3b3b;
+      --black:#1a1a1a;
+      --white:#ffffff;
+      --bg1:#ffe3ea;
+      --bg2:#f9bfd2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#222;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+    section{
+      min-height:100svh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:32px 18px;
+      text-align:center;
+      position:relative;
+      isolation:isolate;
+    }
+    h1,h2{
+      font-family:'Dancing Script',cursive;
+      margin:0 0 .4em 0;
+      line-height:1.1;
+      color:#e6005c;
+      text-shadow:0 2px 10px rgba(230,0,92,.15);
+    }
+    h1{font-size: clamp(40px, 7vw, 80px);}
+    h2{font-size: clamp(30px, 5.5vw, 56px);}
+    p{font-size: clamp(16px, 2.8vw, 20px); margin:.25em 0; color:#3a0030}
+    .btn{
+      appearance:none; border:0; border-radius:14px; padding:14px 22px;
+      font-weight:600; font-size:18px; cursor:pointer;
+      transition: transform .12s ease, box-shadow .2s ease, opacity .2s ease;
+      box-shadow:0 10px 18px rgba(0,0,0,.08);
+      margin:8px;
+    }
+    .btn:active{transform:translateY(1px) scale(.98)}
+    .btn-primary{background:var(--pink); color:white}
+    .btn-dark{background:var(--black); color:white}
+    .hidden{display:none}
+    .stack{max-width:880px}
+    .grid{
+      display:grid; gap:10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      width:min(980px, 100%); margin-top:18px;
+    }
+    .card{
+      background:rgba(255,255,255,.75); border-radius:16px; padding:16px 14px;
+      backdrop-filter: blur(6px);
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      background:white; margin:6px; font-size:14px; color:#7a1258;
+      box-shadow:0 4px 10px rgba(0,0,0,.06);
+    }
+    .em{font-weight:600; color:#c30055}
+    .runaway{position:relative}
+    /* Floating flowers/hearts */
+    .floaty{
+      position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:-1;
+    }
+    .floaty span{
+      position:absolute; font-size: clamp(14px, 3vw, 26px); opacity:.7; animation: drift 12s linear infinite;
+    }
+    @keyframes drift{
+      from{ transform: translateY(120vh) rotate(0deg) }
+      to{ transform: translateY(-20vh) rotate(360deg) }
+    }
+    /* Confetti canvas */
+    canvas.confetti{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:9999 }
+    footer{
+      padding:26px 12px; text-align:center; font-size:12px; color:#5b0042;
+    }
+    /* Mobile tweaks */
+    @media (max-width:420px){
+      .btn{width:calc(100% - 32px)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative floating emojis -->
+  <div class="floaty" aria-hidden="true" id="floaty"></div>
+
+  <!-- Page 1: Intro -->
+  <section id="page1" class="stack">
+    <h1>Hi, Mihlali Esther Muine Jantjies 💖</h1>
+    <p>Born on <span class="em">April 22, 2004</span> — a queen who deserves a proposal fit for her heart.</p>
+    <p>I made something special to show how well I know and cherish you.</p>
+    <button class="btn btn-primary" onclick="go(2)">Next ➝</button>
+  </section>
+
+  <!-- Page 2: Favorites -->
+  <section id="page2" class="stack hidden">
+    <h2>All the little things you love 🌸</h2>
+    <div class="grid">
+      <div class="card">
+        <p>🎨 <span class="em">Colors:</span> Pink · Black · Red</p>
+      </div>
+      <div class="card">
+        <p>🌸 <span class="em">Flowers:</span> pink peonies, red lilies, white tulips, pink roses</p>
+      </div>
+      <div class="card">
+        <p>🍛 <span class="em">Food:</span> butter chicken curry, tacos, chicken, mussels</p>
+      </div>
+      <div class="card">
+        <p>🍫 <span class="em">Dessert:</span> chocolate cake, crème brûlée</p>
+      </div>
+      <div class="card">
+        <p>🥤 <span class="em">Drink:</span> cola tonic & lemonade, orange juice</p>
+      </div>
+      <div class="card">
+        <p>🎶 <span class="em">Composer:</span> Hans Zimmer (modern-day fave)</p>
+      </div>
+      <div class="card">
+        <p>🎬 <span class="em">Series:</span> Modern Family</p>
+      </div>
+      <div class="card">
+        <p>📚 <span class="em">Author:</span> Chimamanda Ngozi Adichie</p>
+      </div>
+      <div class="card">
+        <p>🌺 <span class="em">Scents:</span> sweet · floral · vanilla</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="go(3)">Next ➝</button>
+  </section>
+
+  <!-- Page 3: Love Languages -->
+  <section id="page3" class="stack hidden">
+    <h2>How you like to be loved 💌</h2>
+    <div class="card">
+      <div class="chip">⏳ Quality Time</div>
+      <div class="chip">📝 Words of Affirmation</div>
+      <div class="chip">🤲 Physical Touch</div>
+      <div class="chip">🎁 Receiving Gifts</div>
+      <div class="chip">🤍 Acts of Service</div>
+    </div>
+    <p style="margin-top:12px">I promise to love you in every one of these ways, every single day.</p>
+    <button class="btn btn-primary" onclick="go(4)">Next ➝</button>
+  </section>
+
+  <!-- Page 4: Proposal -->
+  <section id="page4" class="stack hidden">
+    <h2>Mihlali…</h2>
+    <h1>Will you be my girlfriend?</h1>
+    <p>(Pick the right answer 😏)</p>
+    <div>
+      <button class="btn btn-primary" onclick="sayYes()">Yes!</button>
+      <button id="noBtn" class="btn btn-dark runaway">No</button>
+    </div>
+  </section>
+
+  <!-- Celebration (hidden until Yes) -->
+  <section id="page5" class="stack hidden">
+    <h1>Yay!! 🎉</h1>
+    <p>You’re officially mine, <span class="em">Mihlali</span>. Forever us. 💕</p>
+    <audio id="song" preload="auto">
+      <!-- Replace src with a song you both love, or keep silent -->
+    </audio>
+    <button class="btn btn-primary" onclick="share()">Share this moment</button>
+  </section>
+
+  <canvas class="confetti hidden" id="confetti"></canvas>
+
+  <footer>
+    Made with love for Mihlali 💗
+  </footer>
+
+  <script>
+    // Navigation
+    function go(n){
+      document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
+      document.getElementById('page'+n).classList.remove('hidden');
+    }
+
+    // Runaway "No" button
+    const noBtn = document.getElementById('noBtn');
+    function moveNo(){
+      const pad = 20;
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - pad);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - pad);
+      noBtn.style.position='absolute';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+    if(noBtn){
+      ['mouseover','touchstart'].forEach(evt => noBtn.addEventListener(evt, moveNo));
+    }
+
+    // Confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let conf = [], confettiFrame;
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+    function makeConfetti(){
+      conf = [];
+      const n = 180;
+      for(let i=0;i<n;i++){
+        conf.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*-canvas.height,
+          r: 4 + Math.random()*6,
+          a: Math.random()*360,
+          s: 1 + Math.random()*3
+        });
+      }
+    }
+    function drawConfetti(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      conf.forEach(c=>{
+        c.y += c.s;
+        c.x += Math.sin((c.y + c.a)/30);
+        ctx.beginPath();
+        ctx.lineWidth = c.r;
+        ctx.strokeStyle = `hsl(${(c.y+c.a)%360}, 100%, 50%)`;
+        ctx.moveTo(c.x, c.y);
+        ctx.lineTo(c.x + c.r/2, c.y + 8);
+        ctx.stroke();
+      });
+      conf = conf.filter(c=>c.y < canvas.height + 20);
+      if(conf.length>0) confettiFrame = requestAnimationFrame(drawConfetti);
+    }
+
+    function startConfetti(){
+      canvas.classList.remove('hidden');
+      makeConfetti();
+      cancelAnimationFrame(confettiFrame);
+      drawConfetti();
+      setTimeout(()=>{
+        canvas.classList.add('hidden');
+        cancelAnimationFrame(confettiFrame);
+      }, 6000);
+    }
+
+    // Floating emojis
+    const floaty = document.getElementById('floaty');
+    const emojis = ['🌸','🌷','🌹','💗','💞','💖','🩷','💐'];
+    function spawnFloaties(){
+      for(let i=0;i<24;i++){
+        const s = document.createElement('span');
+        s.textContent = emojis[i%emojis.length];
+        s.style.left = Math.random()*100 + '%';
+        s.style.bottom = '-10%';
+        s.style.animationDelay = (Math.random()*10)+'s';
+        s.style.animationDuration = (10 + Math.random()*12)+'s';
+        floaty.appendChild(s);
+      }
+    }
+    spawnFloaties();
+
+    // YES handler
+    function sayYes(){
+      startConfetti();
+      go(5);
+      const song = document.getElementById('song');
+      // Autoplay is often blocked; play on user gesture is allowed. This call is within click.
+      if(song && song.src) { song.play().catch(()=>{}); }
+      if(navigator.vibrate) navigator.vibrate([60, 40, 60]);
+    }
+
+    // Share
+    async function share(){
+      const shareData = {
+        title: "She said YES 💖",
+        text: "Forever us, Mihlali 💕",
+        url: location.href
+      };
+      if(navigator.share){
+        try{ await navigator.share(shareData);}catch(e){}
+      }else{
+        alert('You can copy the link from the address bar and send it ❤️');
+      }
+    }
+  </script>
+</body>
+</html>
